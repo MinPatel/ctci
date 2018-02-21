@@ -35,12 +35,11 @@ class UnorderedList:
     def search_node(self, data):
         isNodeFound = False
         current = self.head
-        while not isNodeFound and current != None:
+        while not isNodeFound and current!= None:
             if current.get_node() == data:
                 isNodeFound = True
             else:
-                current.get_next_node()
-                print(current.get_next_node())
+                current = current.get_next_node()
         return isNodeFound
 
     # def delete(self, data):
