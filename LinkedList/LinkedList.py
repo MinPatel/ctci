@@ -1,13 +1,17 @@
 class Node:
-    def __init__(self, initdata):
+    def __init__(self, initdata, position = 0):
         self.data = initdata
         self.next_node = None
+        self.position = position
 
     def set_node(self, newdata):
         self.data = newdata
 
     def set_next_node(self, newnext):
         self.next_node = newnext
+
+    # def set_index(self):
+    #     self.index_of_node += 1
 
     def get_node(self):
         return self.data
@@ -21,6 +25,7 @@ class UnorderedList:
         #self.head = Node(data)
         self.head = None
 
+
     def is_empty(self):
         return self.head == None
 
@@ -31,6 +36,17 @@ class UnorderedList:
         #Node.set_next_node(temp)
         self.head.set_next_node(temp)
         #return self.head
+        self.set_index_Node(self.head)
+
+    def set_index_Node(self, node_value):
+        position = 0
+        current = node_value
+        while current.next_node != None:
+            current.position = position
+            position+=1
+            current.get_next_node().position = position
+            current = current.get_next_node()
+
 
     def search_node(self, data):
         is_node_found = False
@@ -65,6 +81,17 @@ class UnorderedList:
             current = current.get_next_node()
         return count
 
+    #def append_node(self):
+
+
+    # def index_of_node(self):
+    #     current = self.head
+    #     current.index_of_data = 0
+    #     while current != None:
+    #         current = current.get_next_node()
+    #         current.index_of_data += 1
+
+
 # temp = Node(93)
 # temp = Node(36)
 # temp = Node(45)
@@ -80,6 +107,7 @@ mylist.delete(67)
 mylist.add_node(57)
 mylist.add_node(66)
 mylist.add_node(90)
+
 print(mylist.size_of_list())
 
 
