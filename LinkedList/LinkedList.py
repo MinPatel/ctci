@@ -42,7 +42,6 @@ class UnorderedList:
             current.get_next_node().position = position
             current = current.get_next_node()
 
-
     def search_node(self, data):
         is_node_found = False
         current = self.head
@@ -67,6 +66,7 @@ class UnorderedList:
             else:
                 previous = current
                 current = current.get_next_node()
+        self.set_index_Node(self.head,0)
 
     def size_of_list(self):
         count = 0
@@ -103,6 +103,14 @@ class UnorderedList:
         size_of_list = self.size_of_list()
         self.insert_node_atindex(newdata,size_of_list)
 
+    def pop_node(self):
+        previous = None
+        current = self.head
+        while current != None:
+            previous = current
+            current = current.get_next_node()
+        self.delete(previous.data)
+
 # temp = Node(93)
 # temp = Node(36)
 # temp = Node(45)
@@ -114,15 +122,11 @@ mylist.add_node(37)
 mylist.add_node(66)
 mylist.add_node(90)
 mylist.append_node(45)
+mylist.add_node(31)
+mylist.delete(66)
 
-# mylist.add_node(31)
-# mylist.add_node(77)
-# mylist.add_node(17)
-# mylist.add_node(93)
-# mylist.add_node(26)
-# mylist.add_node(54)
-#
-# print(mylist.size_of_list())
+mylist.pop_node()
+print(mylist.size_of_list())
 # print(mylist.search_node(93))
 # print(mylist.search_node(100))
 #
