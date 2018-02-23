@@ -10,9 +10,6 @@ class Node:
     def set_next_node(self, newnext):
         self.next_node = newnext
 
-    # def set_index(self):
-    #     self.index_of_node += 1
-
     def get_node(self):
         return self.data
 
@@ -22,7 +19,6 @@ class Node:
 
 class UnorderedList:
     def __init__(self):
-        #self.head = Node(data)
         self.head = None
 
 
@@ -36,14 +32,13 @@ class UnorderedList:
         #Node.set_next_node(temp)
         self.head.set_next_node(temp)
         #return self.head
-        self.set_index_Node(self.head)
+        self.set_index_Node(self.head, 0)
 
-    def set_index_Node(self, node_value):
-        position = 0
+    def set_index_Node(self, node_value, position):
         current = node_value
         while current.next_node != None:
             current.position = position
-            position+=1
+            position += 1
             current.get_next_node().position = position
             current = current.get_next_node()
 
@@ -81,16 +76,32 @@ class UnorderedList:
             current = current.get_next_node()
         return count
 
-    #def append_node(self):
+    def insert_node_atindex(self, newdata, nodeindex):
+        previous = None
+        current = self.head
+        indexfound = False
+        while not indexfound:
+            if current.position == nodeindex: #adding the node at any index
+                #self.add_node(newdata)
+                temp = current
+                current = Node(newdata)
+                current.set_next_node(temp)
+                self.set_index_Node(current,nodeindex)
+                previous.set_next_node(current)
+                indexfound = True
+            elif current.position == (nodeindex - 1): #appending the node
+                lastnode = Node(newdata)
+                current.set_next_node(lastnode)
+                lastnode.position = current.position + 1
+                indexfound = True
+            elif current.position != nodeindex:
+                previous = current
+                current = current.get_next_node()
 
 
-    # def index_of_node(self):
-    #     current = self.head
-    #     current.index_of_data = 0
-    #     while current != None:
-    #         current = current.get_next_node()
-    #         current.index_of_data += 1
-
+    def append_node(self,newdata):
+        size_of_list = self.size_of_list()
+        self.insert_node_atindex(newdata,size_of_list)
 
 # temp = Node(93)
 # temp = Node(36)
@@ -100,15 +111,32 @@ class UnorderedList:
 mylist = UnorderedList()
 mylist.add_node(93)
 mylist.add_node(37)
-mylist.add_node(54)
-mylist.add_node(76)
-mylist.add_node(67)
-mylist.delete(67)
-mylist.add_node(57)
 mylist.add_node(66)
 mylist.add_node(90)
+mylist.append_node(45)
 
-print(mylist.size_of_list())
+# mylist.add_node(31)
+# mylist.add_node(77)
+# mylist.add_node(17)
+# mylist.add_node(93)
+# mylist.add_node(26)
+# mylist.add_node(54)
+#
+# print(mylist.size_of_list())
+# print(mylist.search_node(93))
+# print(mylist.search_node(100))
+#
+# mylist.add_node(100)
+# print(mylist.search_node(100))
+# print(mylist.size_of_list())
+#
+# mylist.delete(54)
+# print(mylist.size_of_list())
+# mylist.delete(93)
+# print(mylist.size_of_list())
+# mylist.delete(31)
+# print(mylist.size_of_list())
+# print(mylist.search_node(93))
 
 
 
