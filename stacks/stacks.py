@@ -14,6 +14,9 @@ class Stack(object):
     def size(self):
         return len(self.items)
 
+    def min(self):
+         self.items.sort()
+         return self.items[0]
 
 class FIFOStack(Stack):
     def __init__(self):
@@ -37,36 +40,56 @@ class LIFOStack(Stack):
         return self.items.pop()
 
 
-# LIFOStack = LIFOStack()
-# LIFOStack.push(2)
-# LIFOStack.push(5)
-# LIFOStack.push(78)
-# LIFOStack.push(4)
-# LIFOStack.push(79)
-# LIFOStack.pop()
-#
-#
-# for items in LIFOStack.items:
-#     print(items)
-#
-# print(" ")
-# print(LIFOStack.peek())
-# print (LIFOStack.get_item(3))
+LIFOStack = LIFOStack()
+LIFOStack.push(2)
+LIFOStack.push(5)
+LIFOStack.push(78)
+LIFOStack.push(4)
+LIFOStack.push(79)
 
-FIFOStack = FIFOStack()
-FIFOStack.push(2)
-FIFOStack.push(5)
-FIFOStack.push(78)
-FIFOStack.push(4)
-FIFOStack.push(79)
-FIFOStack.pop()
+print(LIFOStack.min())
+print(" ")
 
-for items in FIFOStack.items:
+for items in LIFOStack.items:
     print(items)
 
 print(" ")
-print(FIFOStack.peek())
-print (FIFOStack.get_item(3))
+print(LIFOStack.peek())
+print (LIFOStack.get_item(3))
+
+# FIFOStack = FIFOStack()
+# FIFOStack.push(2)
+# FIFOStack.push(5)
+# FIFOStack.push(78)
+# FIFOStack.push(4)
+# FIFOStack.push(79)
+# FIFOStack.pop()
+#
+# for items in FIFOStack.items:
+#     print(items)
+#
+# print(" ")
+# print(FIFOStack.peek())
+# print (FIFOStack.get_item(3))
+
+# a = LIFOStack()
+# b = LIFOStack()
+# c = LIFOStack()
+#
+# a.push(2)
+# a.push(2)
+#
+# b.push(3)
+# b.push(3)
+#
+# c.push(4)
+# c.push(4)
+#
+# final = [a,b,c]
+#
+# for i in final:
+#     print(i.items)
+
 
 
 
